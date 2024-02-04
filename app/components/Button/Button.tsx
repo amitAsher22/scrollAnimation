@@ -11,7 +11,7 @@ interface ButtonProps {
   border?: string;
 }
 
-function Button({ name, icon, background, color, border }: ButtonProps) {
+function Button({ name, icon, background = "var(--color-bg)", color, border }: ButtonProps) {
   return (
     <ButtonStyled
       style={{ background: background, color: color, border: border }}

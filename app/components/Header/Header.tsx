@@ -1,15 +1,36 @@
 "use client";
 
+
+import React , {useRef} from "react";
 import Image from "next/image";
-import React from "react";
 import logo from "../../../public/logo.png";
-import Button from "../Button/Button.tsx";
+import Button from "../Button/Button";
 import styled from "styled-components";
 import { FaRocket, FaWallet } from "react-icons/fa";
+import {Abril_Fatface} from 'next/font/google';
+import hover3d from '../../utils/hover'
+
+const abrill = Abril_Fatface({
+  subsets: ['latin'],
+  weight: "400"
+})
+
+
+
+
 
 function Header() {
+
+const hero = useRef<HTMLDivElement>(null)
+const hoverHero = hover3d(hero , {
+  x:30,
+  y:-40,
+  z:30
+});
+
+
   return (
-    <HeaderStyled>
+    <HeaderStyled ref={hero}>
       <nav>
         <div className="logo">
           <Image src={logo} alt="logo" width={36} />
@@ -34,6 +55,21 @@ function Header() {
           <Button name="Connect Wallet" icon={<FaWallet />} />
         </ul>
       </nav>
+      <div className="header-content">
+        <div className="text-content">
+          <h1 className={abrill.className}>Buy , collect, and sell extraordinary NTFs</h1>
+          <p>ccuride Corporation manufactures wheels, wheel end, and braking components for commercial and passenger vehicles. Our lean global manufacturing footprint mean</p>
+          <div className="buttons">
+            <Button name="Get Started"  background="#f2994a" color="#fff" border="1px solid #f2994a" icon={<FaRocket/>}/>
+            <Button name="Learn More" />
+          </div>
+        </div>
+          <div className="image-content">
+              <div className="image" style={{transform : hoverHero.transform}}>
+                <Image src="/images/monkey.png" width={600} height={600} alt="hero" />
+              </div>
+          </div>
+      </div>
     </HeaderStyled>
   );
 }
@@ -83,7 +119,34 @@ const HeaderStyled = styled.header`
         }
       }
     }
+   
   }
+
+  .header-content {
+    padding : 0 10rem 5rem 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    min-height: calc(100vh - 10vh);
+
+.text-content{
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  gap: 2rem;
+  > h1{
+    font-size: clamp(2rrem , 5w , 5rem);
+    color:#2994a;
+    transition: all 0.01s linear;
+    padding-bottom: 1.5rem;
+  }
+}
+
+  }
+ 
+
+
 `;
 
 export default Header;
