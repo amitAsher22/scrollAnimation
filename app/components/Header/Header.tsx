@@ -27,6 +27,11 @@ const hoverHero = hover3d(hero , {
   y:-40,
   z:30
 });
+const imageHover = hover3d(hero , {
+  x:20,
+  y:-5,
+  z:11
+});
 
 
   return (
@@ -66,7 +71,7 @@ const hoverHero = hover3d(hero , {
         </div>
           <div className="image-content">
               <div className="image" style={{transform : hoverHero.transform}}>
-                <Image src="/images/monkey.png" width={600} height={600} alt="hero" />
+                <Image src="/images/monkey.png" width={600} height={600} alt="hero" style={{transform: imageHover.transform }} />
               </div>
           </div>
       </div>
