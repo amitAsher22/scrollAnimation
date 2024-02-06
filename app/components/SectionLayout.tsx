@@ -8,7 +8,7 @@ interface SectionLayoutProps{
 
 function SectionLayout({children, ref} : SectionLayoutProps) {
   return (
-    <div style={{padding:"5rem 10rem"}}>{children}</div>
+    <section style={{padding:"5rem 10rem"}}>{children}</section>
   )
 }
 
